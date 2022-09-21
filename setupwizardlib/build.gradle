@@ -26,22 +26,27 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    publishing {
-        multipleVariants {
-            withSourcesJar()
-            withJavadocJar()
-            allVariants()
-        }
-    }
+//    publishing {
+//        multipleVariants {
+//            withSourcesJar()
+//            withJavadocJar()
+//            allVariants()
+//        }
+//    }
 
 }
 
-publishing {
-    publications {
-        release(MavenPublication) {
-            groupId = 'com.android.setupwizardlib'
-            artifactId = 'setupwizardlib'
-            version = '1.0'
+
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.android.setupwizardlib'
+                artifactId = 'setupwizardlib'
+                version = '0.0.0'
+            }
         }
     }
 }
